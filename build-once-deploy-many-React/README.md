@@ -22,12 +22,11 @@ Due to frequent releases, they need a solution to build the application / binary
 Thus, FooStore wants their React Web App to be able to load configurations at runtime based on different environments - e.g. [Dev, Test, Staging, Prod-AU, Prod-NZ, Prod-US, etc] plus a CI/CD pipeline upgrade to achieve the "Build Once and Deploy Many" functionality, which means they need to run CI for 15 minutes only once and then deploy to as many environments as they want.
 
  
-
 ## The Challenge
 There are 2 challenges behind the solution.
 
 ### 1 - Build minifies js files
-![dist-folder](src/dist-folder.png)
+![dist-folder](src/dist-folder.png =x250)   
 By default, in a standard structured React App folder, when you run `yarn/npm build` or `react-scripts build`, React minifies and uglifies all `.ts / .js `files except files in `~/public` folder.
 
 As you can see from the screenshot, only the files in `~/public` folder stay in the original format, and the remaining `.js` files have complied to `.chunk.js` which is almost impossible to look up and replace environment values for the application to load at runtime.
@@ -44,7 +43,7 @@ When people access via the browser, it would know the config file is at `webserv
 The aim of this CI/CD pipeline design is not only to simplify the deployment process, by making it repeatable and easier to debug with automatic code auditing and testing in place but also to replace the config file based on the environment during the CD process to achieve Build Once and Deploy Many.
 
 ### Pipeline Design
-![cicd-diagram](src/cicd-diagram.png)
+![cicd-diagram](src/cicd-diagram.png)  
 For now, we only focus on  CI / Build step and CD / Replace config.js steps as they are the key to achieving Build Once and Deploy Many with a React application. To elaborate, the below steps are needed:
 
 ### 1. Prepare a config.js file
