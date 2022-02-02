@@ -1,4 +1,19 @@
 # Build Once Deploy Many React
+
+Table of Contents
+=================
+
+* [Build Once Deploy Many React](#build-once-deploy-many-react)
+   * [The Scenario](#the-scenario)
+   * [The Challenge](#the-challenge)
+   * [The Solution](#the-solution)
+      * [Pipeline Design](#pipeline-design)
+      * [1. Prepare a config.js file](#1-prepare-a-configjs-file)
+      * [2. Enable dynamic config loading at application runtime](#2-enable-dynamic-config-loading-at-application-runtime)
+      * [3. How to access variables?](#3-how-to-access-variables)
+      * [4. [CI] Build the code](#4-ci-build-the-code)
+   * [Conclusion](#conclusion)
+
 This is a concise solution that enables how to "Build Once and Deploy Many" for React Apps - which means build the React application binary-only once, then migrate the same binary file from Development to Non-Production and then to Production by loading configurations at application runtime.
 
 ## The Scenario
@@ -127,7 +142,7 @@ my-app/
 │  │  ├─ config.prod.js
 ```
 
-5. [CD] Replace the configuration file
+### 5. [CD] Replace the configuration file
 👉 Finally we replace the ~/dist/config.js with ~/dist/envs/config.<environment>.js during the CD deployment process.
 
 Explanation:
