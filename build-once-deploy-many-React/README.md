@@ -26,7 +26,7 @@ Thus, FooStore wants their React Web App to be able to load configurations at ru
 There are 2 challenges behind the solution.
 
 ### 1 - Build minifies js files
-![dist-folder](src/dist-folder.png =x250)   
+<img src="src/dist-folder.png =x250" width="100" height="100">  
 By default, in a standard structured React App folder, when you run `yarn/npm build` or `react-scripts build`, React minifies and uglifies all `.ts / .js `files except files in `~/public` folder.
 
 As you can see from the screenshot, only the files in `~/public` folder stay in the original format, and the remaining `.js` files have complied to `.chunk.js` which is almost impossible to look up and replace environment values for the application to load at runtime.
