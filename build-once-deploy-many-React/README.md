@@ -1,5 +1,4 @@
 # Table of Contents
-=================
 
 * [Build Once Deploy Many React](#build-once-deploy-many-react)
    * [The Scenario](#the-scenario)
