@@ -40,7 +40,22 @@ The Integration team will be responsible for:
 ## High Level Solution Architecture
 ![solution-design](src/solution-design.jpeg)
 
- 
+## Solution Components 
+| No  | Logical Component   | Description                                                                                                                               |
+|-----|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| 1   | Front-end Web App   | A Web-based User Interface that allows users to upload videos, monitor processing status in real time, and batch new tasks.               |
+| 2   | API Gateway         | An API endpoint for POST request that triggers AWS StepFunction. Payloads includes selected JobIDs and user information.                  |
+| 3   | Cognito             | User authentications for UI users. Unauthenticated users are not allowed, and authenticated users will have roles based on authorisation. |
+| 4   | AWS StepFunction    | Forward parameters from API POST request to the data formatting Lambda function, followed by triggering a series of analysing tasks.      |
+| 4.1 | Recognition         | AWS Recognition services that identify user emotion, results are returned via API.                                                        |
+| 4.2 | SNS                 | An SNS topic subscribed to AWS Recognition and notify Lambda function that Recognition job is finished so to proceed.                     |
+| 4.3 | Transcribe          | AWS Transcribe services that get the transcription from users and writes results to S3 bucket in JSON format.                             |
+| 4.4 | Export CSV Lambda   | Format email content and send SES to users.                                                                                               |
+| 5   | Raw Videos S3       | Store raw format video content.                                                                                                           |
+| 6   | Formatted Videos S3 | Store formatted video content.                                                                                                            |
+| 7   | Transcode Lambda    | Use Elastic Transcode services that transform raw videos to formatted videos.                                                             |
+| 8   | EventBridge         | A centralised hub that controls which message trigging the relative services to achieve an event-drive architecture.                      |
+
 ## The Challenge
 There are 2 challenges behind the solution.
 
