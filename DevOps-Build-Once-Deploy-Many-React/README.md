@@ -42,7 +42,7 @@ When people access via the browser, it would know the config file is at `webserv
 The aim of this CI/CD pipeline design is not only to simplify the deployment process, by making it repeatable and easier to debug with automatic code auditing and testing in place but also to replace the config file based on the environment during the CD process to achieve Build Once and Deploy Many.
 
 ### Pipeline Design
-![cicd-diagram](src/cicd-diagram.png)  
+![cicd-diagram](src/cicd-diagram.png)
 For now, we only focus on  CI / Build step and CD / Replace config.js steps as they are the key to achieving Build Once and Deploy Many with a React application. To elaborate, the below steps are needed:
 
 ### 1. Prepare a config.js file
