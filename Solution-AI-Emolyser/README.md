@@ -2,14 +2,14 @@
 
 * [AI Emolyser](#table-of-contents)
    * [High Level Requirements](#high-level-requirements)
-   * [Implementations](#implementations)
    * [High Level Solution Architecture](#high-level-solution-architecture)
    * [Solution Components](#solution-components)
+   * [Implementations Plan](#implementations-plan)
    * [Project setup](#project-setup)
-         * [1. Install all dependecies](#1-install-all-dependecies)
-         * [2. Configure the profile for AWS CDK CLI](#2-configure-the-profile-for-aws-cdk-cli)
-         * [3. Deploy stacks](#3-deploy-stacks)
-         * [4. There are 3 manual actions involved to deploy.](#4--there-are-3-manual-actions-involved-to-deploy)
+      * [1. Install all dependecies](#1-install-all-dependecies)
+      * [2. Configure the profile for AWS CDK CLI](#2-configure-the-profile-for-aws-cdk-cli)
+      * [3. Deploy stacks](#3-deploy-stacks)
+      * [4. There are 3 manual actions involved to deploy.](#4--there-are-3-manual-actions-involved-to-deploy)
 
 ## High Level Requirements
 FooAds is a global digital agency that engages with many Fortune 500 companies for a variety of digital advertising and has large amounts of ongoing interviews with clients, customers, and even people on the streets.
@@ -19,23 +19,6 @@ Currently, they have contracted at least 30+ officers and spend 4 million annual
 Some examples are a BMW driver showing unhappiness when he talks about the appearance of his car, our loyal partner representative showing extremely happy about the engagement price.
 
 However, spending 4 million on getting time-wasting results should be improved via technology, that's where we come up with an automated facial analysis solution to address this business problem.
-
-## Implementations
-The Data Services team will be responsible for:
-1. Build the data formating lambda function and related services
-2. Test the model accuracy based on previous manual results
-3. Format the final result JSON
-
-The Digital team will be responsible for:
-1. Build the UI incrementally with feedback from the Data Services team
-2. Ensure the data structure is aligned with the Integration team' design
-3. API Gateway infra, DNS, CDN, and domain
-
-The Integration team will be responsible for:
-1. Design database schema
-2. Implement EventBridge event-driven architecture
-3. GraphQL real-time subscription to UI
-4. Step function analysing pipeline
 
 ## High Level Solution Architecture
 ![solution-design](src/solution-design.jpeg)
@@ -56,17 +39,33 @@ The Integration team will be responsible for:
 | 7   | Transcode Lambda    | Use Elastic Transcode services that transform raw videos to formatted videos.                                                             |
 | 8   | EventBridge         | A centralised hub that controls which message trigging the relative services to achieve an event-drive architecture.                      |
 
+## Implementations Plan
+The Data Services team will be responsible for:
+1. Build the data formating lambda function and related services
+2. Test the model accuracy based on previous manual results
+3. Format the final result JSON
+
+The Digital team will be responsible for:
+1. Build the UI incrementally with feedback from the Data Services team
+2. Ensure the data structure is aligned with the Integration team' design
+3. API Gateway infra, DNS, CDN, and domain
+
+The Integration team will be responsible for:
+1. Design database schema
+2. Implement EventBridge event-driven architecture
+3. GraphQL real-time subscription to UI
+4. Step function analysing pipeline
 
 ## Project setup
 This project's infra is written in AWS CDK, all codes are simplified and kept minimum for demo purposes.
 
-#### 1. Install all dependecies
+### 1. Install all dependecies
 
 ```
 cd app && npm install
 ```
 
-#### 2. Configure the profile for AWS CDK CLI
+### 2. Configure the profile for AWS CDK CLI
 
 Create an programatic access role in the AWS account that I provided.
 Place the profile with template below in `.aws/config`
@@ -79,7 +78,7 @@ aws_access_key_id=REPLACE_WITH_YOURS
 aws_secret_access_key=REPLACE_WITH_YOURS
 ```
 
-#### 3. Deploy stacks
+### 3. Deploy stacks
 
 See `package.json` of the pre-defined scripts. e.g.
 
@@ -87,7 +86,7 @@ See `package.json` of the pre-defined scripts. e.g.
 npm run deploy:staging:site-resources
 ```
 
-#### 4. ⚠ There are 3 manual actions involved to deploy.
+### 4. ⚠ There are 3 manual actions involved to deploy.
 
 95% the deployments are done by AWS CDK, which means a little manual configuration is needed if you want to deploy the whole stack in **a new or your own AWS account**.
 
