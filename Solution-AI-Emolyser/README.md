@@ -1,16 +1,15 @@
 # Table of Contents
 
-* [Build Once Deploy Many React](#build-once-deploy-many-react)
-   * [The Scenario](#the-scenario)
-   * [The Challenge](#the-challenge)
-   * [The Solution](#the-solution)
-      * [Pipeline Design](#pipeline-design)
-      * [1. Prepare a config.js file](#1-prepare-a-configjs-file)
-      * [2. Enable dynamic config loading at application runtime](#2-enable-dynamic-config-loading-at-application-runtime)
-      * [3. How to access variables?](#3-how-to-access-variables)
-      * [4. [CI] Build the code](#4-ci-build-the-code)
-   * [Conclusion](#conclusion)
-
+* [AI Emolyser](#table-of-contents)
+   * [High Level Requirements](#high-level-requirements)
+   * [Implementations](#implementations)
+   * [High Level Solution Architecture](#high-level-solution-architecture)
+   * [Solution Components](#solution-components)
+   * [Project setup](#project-setup)
+         * [1. Install all dependecies](#1-install-all-dependecies)
+         * [2. Configure the profile for AWS CDK CLI](#2-configure-the-profile-for-aws-cdk-cli)
+         * [3. Deploy stacks](#3-deploy-stacks)
+         * [4. There are 3 manual actions involved to deploy.](#4--there-are-3-manual-actions-involved-to-deploy)
 
 ## High Level Requirements
 FooAds is a global digital agency that engages with many Fortune 500 companies for a variety of digital advertising and has large amounts of ongoing interviews with clients, customers, and even people on the streets.
@@ -88,7 +87,7 @@ See `package.json` of the pre-defined scripts. e.g.
 npm run deploy:staging:site-resources
 ```
 
-## ⚠ There are 3 manual actions involved to deploy.
+#### 4. ⚠ There are 3 manual actions involved to deploy.
 
 95% the deployments are done by AWS CDK, which means a little manual configuration is needed if you want to deploy the whole stack in **a new or your own AWS account**.
 
