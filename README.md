@@ -9,3 +9,6 @@
 
 ## AI Solution Emolyser
 ![solution-design](Solution-AI-Emolyser/src/solution-design.jpeg)
+
+## 3 Tier Web Application
+![solution-design](Solution-Web-App-3-Tier/src/solution-design.jpeg)
